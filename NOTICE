@@ -1,0 +1,8 @@
+Rancher Access Migrator
+
+This project is derived from Rancher Labs cattle-drive:
+https://github.com/rancherlabs/cattle-drive
+
+The upstream Apache License 2.0 file is retained. Modifications include the
+portable export/import format, validation and planning engine, RoleTemplate
+handling, idempotent binding creation, tests, and migration documentation.
