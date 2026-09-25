@@ -1,0 +1,24 @@
+apiVersion: rancher-access-migrator.io/v1alpha1
+kind: RancherAccessSnapshot
+source:
+  rancher: https://rancher-a.example.com
+  cluster: production
+  clusterID: c-abc
+roleTemplates:
+  - name: app-operator
+    context: project
+    rules:
+      - apiGroups: [apps]
+        resources: [deployments]
+        verbs: [get, list, watch, update, patch]
+projects:
+  - name: Development
+    namespaces: [app-dev, backend-dev]
+    bindings:
+      - principal: azuread_group://developers
+        principalType: group
+        roleTemplate: app-operator
+clusterBindings:
+  - principal: azuread_group://platform-admins
+    principalType: group
+    roleTemplate: cluster-owner
